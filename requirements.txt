@@ -1,5 +1,6 @@
 streamlit
 pandas
 plotly
-openai
+openai==0.28
 openpyxl
+python-dotenv
