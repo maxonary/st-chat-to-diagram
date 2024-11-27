@@ -1,10 +1,13 @@
 import os
 
+from dotenv import load_dotenv
+
 import streamlit as st
 import pandas as pd
 import plotly.express as px
 import openai
 
+load_dotenv()
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
 st.title("Interaktive AI-Diagramm-Erstellung")
@@ -14,7 +17,7 @@ if uploaded_file:
     if uploaded_file.name.endswith(".csv"):
         df = pd.read_csv(uploaded_file)
     else:
-        df = pd.read_excel(uploaded_file)
+        df = pd.read_excel(uploaded_file, engine='openpyxl')
 
     st.write("Hochgeladene Tabelle:")
     st.dataframe(df)
